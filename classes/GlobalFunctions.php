@@ -86,6 +86,18 @@
 		$path = '/file/videos/' . rawurlencode($id) . '/' . rawurlencode($gamertag) . '/' . $iPage;
 		return new FileResponse(APIRequest($path));
 	}
+
+	/*!	@function getCurrentChallenges
+	  	@abstract returns a GameChallengesResponse object for Bungie's challenges of the day.
+		@result GameChallengesResponse Object - challenges for the day
+	 */
+	function getCurrentChallenges(){
+		///game/challenges/{identifier}/
+		$path = '/game/challenges/' . rawurlencode(APIKEY);
+		$return = APIRequest($path);
+		return new GameDetailsResponse(APIRequest($path));
+	}
+
 	function doReachFileSearch($id, $file_category, $iPage = 0, $mapFilter = 'null', $engineFilter = 'null', $dateFilter = 'All', $sortFilter = 'MostRelevant', $tags = ''){
 		///file/search/{identifier}/{file_category}/{MapFilter}/{engineFilter}/{DateFilter}/{SortFilter}/{iPage}?tags={tags}
 		
